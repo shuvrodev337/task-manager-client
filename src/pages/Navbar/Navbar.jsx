@@ -41,9 +41,9 @@ console.log(theme);
 
   const endNavItems = (
     <>
-  <NavLink>LogOut</NavLink>
-  <NavLink to={'/sign-up'}>Signup</NavLink>
-  <NavLink>Log In</NavLink>
+  <NavLink>LogOut</NavLink> 
+  <NavLink to={'/sign-up'}>Sign Up</NavLink>
+  <NavLink to={'/log-in'}>Log In</NavLink>
     
     </>
   );
