@@ -7,8 +7,10 @@ import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../../Providers/AuthProvider";
 import SocialLogins from "../../components/SocialLogins/SocialLogins";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Signup = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const {
     user,
@@ -112,17 +114,26 @@ const Signup = () => {
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Password</span>
+                  <span className="label-text">Create Password</span>
                 </label>
+                <div className="flex items-center">
                 <input
-                  type="password"
+                 type={showPassword ? "text" : "password"}
                   placeholder="********"
-                  className="input input-bordered"
+                  className="input input-bordered w-full"
                   {...register("password", {
                     required: true,
                     minLength: 6,
                   })}
                 />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="btn btn-link btn-xs absolute right-10"
+                >
+                  {showPassword ? <FaEyeSlash className="text-2xl text-gray-500"></FaEyeSlash >:<FaEye className="text-2xl text-gray-500"></FaEye>}
+                </button>
+                </div>
                 {errors.password?.type === "required" && (
                   <p className="text-red-800 text-sm">Password is required</p>
                 )}
@@ -134,12 +145,21 @@ const Signup = () => {
                 <label className="label">
                   <span className="label-text">Confirm Password</span>
                 </label>
+                <div className="flex items-center">
                 <input
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   placeholder="********"
-                  className="input input-bordered"
+                  className="input input-bordered w-full"
                   {...register("confirmPassword", { required: true })}
                 />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="btn btn-link btn-xs absolute right-10"
+                >
+                  {showPassword ? <FaEyeSlash className="text-2xl text-gray-500"></FaEyeSlash >:<FaEye className="text-2xl text-gray-500"></FaEye>}
+                </button>
+                </div>
               </div>
               <p className="text-red-800">{errorMsg}</p>
 

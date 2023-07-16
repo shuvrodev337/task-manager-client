@@ -16,29 +16,29 @@ const SocialLogins = () => {
     const from = location.state?.from?.pathname || "/";
 
     const handleGoogleSignIn = () => {
-        // googleSignIn()
-        //     .then(result=>{
-        //         const loggedInUser = result.user;
-        //         // console.log(loggedInUser);
-        //         const savedUser = { name: loggedInUser.displayName, email: loggedInUser.email, photo: loggedInUser.photoURL}
-        //         axios.post('https://todo-app-server-three.vercel.app/users',savedUser)
-        //         .then(res=>{
-        //             // console.log(res.data);
-        //             Swal.fire({
-        //                 position: 'center',
-        //                 icon: 'success',
-        //                 title: 'Log In successful.',
-        //                 showConfirmButton: false,
-        //                 timer: 1500
-        //             });
-        //             navigate(from, { replace: true });
+        googleSignIn()
+            .then(result=>{
+                const loggedInUser = result.user;
+                // console.log(loggedInUser);
+                const savedUser = { name: loggedInUser.displayName, email: loggedInUser.email}
+                axios.post('http://localhost:3000/users',savedUser)
+                .then(res=>{
+                    // console.log(res.data);
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Log In successful.',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    navigate(from, { replace: true });
   
-        //         })
-        //     })
-        //     .catch(error=>{
-        //         // console.log(error.message);
-        //     })
-        //     // navigate(from, { replace: true });
+                })
+            })
+            .catch(error=>{
+                // console.log(error.message);
+            })
+            // navigate(from, { replace: true });
     }
     return (
         <div>

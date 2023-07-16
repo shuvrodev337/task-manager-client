@@ -1,12 +1,24 @@
 
 import { Link, NavLink, useLocation } from "react-router-dom";
 import useTheme from "../../hooks/useTheme";
+import { useContext } from "react";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const Navbar = () => {
+  const { user,
+    loading,
+    logOut } = useContext(AuthContext)
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
 
 //   Dark-light toggle
 const [theme,setTheme] = useTheme()
-console.log(theme);
   const handleTheme = (e)=>{
     if (e.target.checked) {
       setTheme('dark')
@@ -38,34 +50,47 @@ console.log(theme);
 </label>
     </>
   );
+   
 
   const endNavItems = (
     <>
-  <NavLink>LogOut</NavLink> 
-  <NavLink to={'/sign-up'}>Sign Up</NavLink>
-  <NavLink to={'/log-in'}>Log In</NavLink>
-    
+    {
+      user?.email ?(
+        <>
+        {user?.displayName && <div > 
+        <p> Logged in as</p>
+        <p> {user?.displayName}</p>
+        </div>}
+        <NavLink onClick={handleLogOut}>LogOut</NavLink>
+        </>
+      ):(
+        <>
+        <NavLink to={'/sign-up'}>Sign Up</NavLink>
+        <NavLink to={'/log-in'}>Log In</NavLink>
+        </>
+      )
+    }
     </>
   );
 
   return (
-    <div className="navbar mb-2 px-6  rounded-lg mt-4 bg-transparent shadow-lg">
+    <div className="navbar px-6 h-20 rounded-lg mt-4 bg-transparent shadow-lg">
       <div className="navbar-start space-x-2">
         {/* <NavLink to={"/"}>
           <img src={logo1} alt="" className="h-20" />
           
         </NavLink> */}
         <NavLink to={"/"}>
-          <h2 className="text-3xl font-bold text-red-500">Task Manager</h2>
+          <h2 className="text-3xl ">Task Manager</h2>
         </NavLink>
       </div>
       <div className="navbar-center hidden lg:flex ">
-        <ul className="menu menu-horizontal space-x-6  items-center font-semibold text-sky-500">
+        <ul className={`menu menu-horizontal space-x-6  items-center  ${theme=== 'dark' && 'text-sky-500'}`}>
           {centerNavItems}
         </ul>
       </div>
       <div className="navbar-end ">
-        <ul className="menu menu-horizontal space-x-6 hidden lg:flex items-center text-sky-500 font-semibold">
+        <ul className={`menu menu-horizontal space-x-6 hidden lg:flex items-center ${theme=== 'dark' && 'text-sky-500'}`}>
           {endNavItems}
         </ul>
 
