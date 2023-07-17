@@ -7,6 +7,7 @@ import Signup from "../pages/Signup/Signup";
 import Login from "../pages/Login/Login";
 import CreateTask from "../pages/CreateTask/CreateTask";
 import MyTasks from "../pages/MyTasks/MyTasks";
+import EditTask from "../components/EditTask/EditTask";
 
   const router = createBrowserRouter([
     {
@@ -32,7 +33,11 @@ import MyTasks from "../pages/MyTasks/MyTasks";
         {
             path:'/my-tasks',
             element:<MyTasks></MyTasks>
-        }
+        },
+        {
+            path:'/edit-task',
+            element:<EditTask></EditTask>
+        },
       ]
     },
   ]);

@@ -1,9 +1,12 @@
 import axios from "axios";
 import { useState } from "react";
 import { FaCheck, FaEdit, FaTrash } from "react-icons/fa";
+import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const TaskCard = ({ task, refetchMyTasks }) => {
+    const location = useLocation()
+    const navigate = useNavigate()
   const {
     _id,
     title,
@@ -21,8 +24,16 @@ const TaskCard = ({ task, refetchMyTasks }) => {
     month: "long",
   })} ${date.getFullYear()}`;
 
-  const editTask = (task) => {};
-  const deletetask = (task) => {};
+  const editTask = (task) => {
+
+    //   console.log(task._id);
+    navigate('/edit-task',{state:{data:task}})
+  };
+
+
+  const deleteTask = (task) => {};
+
+
   const completeTask = (task) => {
     Swal.fire({
       title: "Are you sure?",
@@ -61,32 +72,23 @@ const TaskCard = ({ task, refetchMyTasks }) => {
         <p>Due Date : {formattedDate}</p>
         <p>Status: {status}</p>
         <p>Assigned to: {assignedUser}</p>
-        {/* <div className="tooltip  tooltip-bottom absolute top-2 right-12 " data-tip='Edit Task'>
-            <button className={`text-xl ${disable && 'hidden'}`} onClick={editTask}><FaEdit></FaEdit></button>
-          </div>
-          <div className="tooltip  tooltip-bottom absolute top-2 right-20 " data-tip='Delete Task'>
-          <button className="text-xl " onClick={deletetask}><FaTrash></FaTrash></button>
-          </div>
-          <div className="tooltip  tooltip-bottom absolute top-2 right-4 " data-tip='Complete Task'>
-            <button  className={`text-xl ${disable && 'hidden'}`} onClick={()=>completeTask(task)}><FaCheck></FaCheck></button>
-          </div> */}
         <div className="absolute top-2 right-4 flex gap-4">
           <div className="tooltip  tooltip-bottom  " data-tip="Edit Task">
             <button
-              className={`text-xl ${disable && "hidden"}`}
-              onClick={editTask}
+              className={`text-xl ${(disable || status==='completed') && "hidden"}`}
+              onClick={()=>editTask(task)}
             >
               <FaEdit></FaEdit>
             </button>
           </div>
           <div className="tooltip  tooltip-bottom  " data-tip="Delete Task">
-            <button className="text-xl " onClick={deletetask}>
+            <button className="text-xl " onClick={()=>deleteTask(task)}>
               <FaTrash></FaTrash>
             </button>
           </div>
           <div className="tooltip  tooltip-bottom" data-tip="Complete Task">
             <button
-              className={`text-xl ${disable && "hidden"}`}
+              className={`text-xl ${disable || status==='completed' && "hidden"}`}
               onClick={() => completeTask(task)}
             >
               <FaCheck></FaCheck>
