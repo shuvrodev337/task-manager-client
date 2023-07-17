@@ -31,7 +31,39 @@ const TaskCard = ({ task, refetchMyTasks }) => {
   };
 
 
-  const deleteTask = (task) => {};
+  const deleteTask = (task) => {
+
+    Swal.fire({
+        title: "Are you sure?",
+        text: `You want to delete the task?`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, Delete!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios
+            .delete(`http://localhost:3000/tasks/${_id}`)
+            .then((res) => {
+              if (res.data.deletedCount > 0) {
+                
+  
+                Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: "Task Deleted!",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+                
+                refetchMyTasks()
+              }
+            });
+        }
+      });
+
+  };
 
 
   const completeTask = (task) => {
@@ -65,7 +97,7 @@ const TaskCard = ({ task, refetchMyTasks }) => {
     });
   };
   return (
-    <div className="card w-96 bg-primary text-primary-content">
+    <div className="card rounded-none w-4/5 md:w-full  bg-gray-200">
       <div className="card-body">
         <h2 className="card-title">{title}</h2>
         <p>{description}</p>
@@ -86,7 +118,7 @@ const TaskCard = ({ task, refetchMyTasks }) => {
               <FaTrash></FaTrash>
             </button>
           </div>
-          <div className="tooltip  tooltip-bottom" data-tip="Complete Task">
+          <div className="tooltip  tooltip-bottom" data-tip="Mark as complete">
             <button
               className={`text-xl ${disable || status==='completed' && "hidden"}`}
               onClick={() => completeTask(task)}

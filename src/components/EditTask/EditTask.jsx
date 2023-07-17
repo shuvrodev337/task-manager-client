@@ -7,11 +7,13 @@ import { useContext, useState } from "react";
 
 import axios from "axios";
 import Swal from "sweetalert2";
-import { AuthContext } from "../../Providers/AuthProvider";
+
 const EditTask = () => {
   const location = useLocation();
+  const navigate = useNavigate()
+
   const { data: task } = location.state || {};
-const {user} = useContext(AuthContext)
+
   const {
     _id,
     title,
@@ -57,6 +59,8 @@ updatedTask.assignedUserEmail = assignedUserEmail
                   showConfirmButton: false,
                   timer: 1500,
                 });
+                reset()
+                navigate('/my-tasks')
               }
             });
         }
