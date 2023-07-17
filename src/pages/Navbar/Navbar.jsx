@@ -32,7 +32,7 @@ const [theme,setTheme] = useTheme()
     <>
       <NavLink >Home</NavLink>
 
-      <NavLink >Add A Task</NavLink>
+      <NavLink to={'/create-task'}>Create A Task</NavLink>
       <NavLink >Completed Tasks</NavLink>
 
       
@@ -58,7 +58,7 @@ const [theme,setTheme] = useTheme()
       user?.email ?(
         <>
         {user?.displayName && <div > 
-        <p> Logged in as</p>
+        <p className="text-center"> Logged in as</p>
         <p> {user?.displayName}</p>
         </div>}
         <NavLink onClick={handleLogOut}>LogOut</NavLink>
