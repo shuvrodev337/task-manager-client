@@ -12,7 +12,7 @@ const MyTasks = () => {
             <SectionTitle sectionHeading={'My Tasks'}></SectionTitle>
             <div className="flex flex-col items-center md:grid grid-cols-3 gap-4 ">
             {
-             myTasks.map(task=><TaskCard key={task._id} task={task}></TaskCard>)
+             myTasks.map(task=><TaskCard key={task._id} task={task} refetchMyTasks={refetchMyTasks}></TaskCard>)
             }
         </div>
         </div>
