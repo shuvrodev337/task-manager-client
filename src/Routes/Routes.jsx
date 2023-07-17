@@ -6,6 +6,7 @@ import Home from "../pages/Home/Home";
 import Signup from "../pages/Signup/Signup";
 import Login from "../pages/Login/Login";
 import CreateTask from "../pages/CreateTask/CreateTask";
+import MyTasks from "../pages/MyTasks/MyTasks";
 
   const router = createBrowserRouter([
     {
@@ -27,6 +28,10 @@ import CreateTask from "../pages/CreateTask/CreateTask";
         {
             path:'/create-task',
             element:<CreateTask></CreateTask>
+        },
+        {
+            path:'/my-tasks',
+            element:<MyTasks></MyTasks>
         }
       ]
     },

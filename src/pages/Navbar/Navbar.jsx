@@ -30,7 +30,7 @@ const [theme,setTheme] = useTheme()
   // Central Nav Buttons
   const centerNavItems = (
     <>
-      <NavLink >Home</NavLink>
+      <NavLink to={'/my-tasks'}>My Tasks</NavLink>
 
       <NavLink to={'/create-task'}>Create A Task</NavLink>
       <NavLink >Completed Tasks</NavLink>
