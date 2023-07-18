@@ -8,6 +8,11 @@ import Login from "../pages/Login/Login";
 import CreateTask from "../pages/CreateTask/CreateTask";
 import MyTasks from "../pages/MyTasks/MyTasks";
 import EditTask from "../components/EditTask/EditTask";
+import AdminRoute from "./AdminRoute";
+import Dashboard from "../pages/Dashboard/Dashboard";
+import AdminHome from "../pages/Dashboard/AdminHome";
+import ManageUsers from "../pages/Dashboard/ManageUsers";
+import ManageTasks from "../pages/Dashboard/ManageTasks";
 
   const router = createBrowserRouter([
     {
@@ -38,8 +43,29 @@ import EditTask from "../components/EditTask/EditTask";
             path:'/edit-task',
             element:<EditTask></EditTask>
         },
+        
       ]
     },
+    {
+      
+        path:'/dashboard',
+        element:<AdminRoute><Dashboard></Dashboard></AdminRoute>,
+        children:[
+          {
+            path:"/dashboard",
+        element:<AdminRoute><AdminHome></AdminHome></AdminRoute>,
+          },
+          {
+            path:"/dashboard/manage-users",
+        element:<AdminRoute><ManageUsers></ManageUsers></AdminRoute>,
+          },
+          {
+            path:"/dashboard/manage-tasks",
+        element:<AdminRoute><ManageTasks></ManageTasks></AdminRoute>,
+          },
+        ]
+    
+    }
   ]);
 
   export default router

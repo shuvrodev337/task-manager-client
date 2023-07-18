@@ -3,11 +3,17 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import useTheme from "../../hooks/useTheme";
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
+import useAdmin from "../../hooks/useAdmin";
 
 const Navbar = () => {
   const { user,
     loading,
     logOut } = useContext(AuthContext)
+
+const [isAdmin, isAdminLoading] = useAdmin()
+console.log(isAdmin);
+
+
 
   const handleLogOut = () => {
     logOut()
@@ -33,7 +39,7 @@ const [theme,setTheme] = useTheme()
       <NavLink to={'/my-tasks'}>My Tasks</NavLink>
 
       <NavLink to={'/create-task'}>Create A Task</NavLink>
-      {/* <NavLink >Completed Tasks</NavLink> */}
+      {(isAdmin &&  user) && <NavLink to={'/dashboard'} >Dashboard</NavLink>}
 
       
         <label className="swap swap-rotate">
