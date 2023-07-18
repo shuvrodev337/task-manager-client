@@ -33,7 +33,7 @@ const [theme,setTheme] = useTheme()
       <NavLink to={'/my-tasks'}>My Tasks</NavLink>
 
       <NavLink to={'/create-task'}>Create A Task</NavLink>
-      <NavLink >Completed Tasks</NavLink>
+      {/* <NavLink >Completed Tasks</NavLink> */}
 
       
         <label className="swap swap-rotate">

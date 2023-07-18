@@ -7,6 +7,7 @@ import { useContext, useState } from "react";
 
 import axios from "axios";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const EditTask = () => {
   const location = useLocation();
@@ -68,6 +69,9 @@ updatedTask.assignedUserEmail = assignedUserEmail
 }
 
   return <div className="md:w-1/2 mx-auto">
+    <Helmet>
+        <title>TODO | Edit Task</title>
+      </Helmet>
       <div className="hero-content flex-col gap-10">
         <div className="card  w-full  shadow-2xl bg-base-100 ">
           <form onSubmit={handleSubmit(onSubmit)} className="card-body">

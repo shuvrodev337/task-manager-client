@@ -10,6 +10,7 @@ import { useContext, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Providers/AuthProvider";
+import { Helmet } from "react-helmet-async";
 const CreateTask = () => {
     const {user} = useContext(AuthContext)
   const [errorMsg, setErrorMsg] = useState("");
@@ -68,6 +69,7 @@ const CreateTask = () => {
             console.log(res.data);
             if (res.data.insertedId) {
               reset();
+              navigate('/my-tasks')
               Swal.fire({
                 position: "center",
                 icon: "success",
@@ -86,6 +88,9 @@ const CreateTask = () => {
 
   return (
     <div className="md:w-1/2 mx-auto">
+      <Helmet>
+        <title>TODO | Create Task</title>
+      </Helmet>
       <div className="hero-content flex-col gap-10">
         <div className="card  w-full  shadow-2xl bg-base-100 ">
           <form onSubmit={handleSubmit(onSubmit)} className="card-body">

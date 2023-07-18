@@ -1,3 +1,5 @@
+import { Helmet } from "react-helmet-async";
+import MyTasks from "../MyTasks/MyTasks";
 
 const Home = () => {
 
@@ -5,7 +7,10 @@ const Home = () => {
     
     return (
         <div>
-            this is home
+            <Helmet>
+        <title>TODO | Home</title>
+      </Helmet>
+            <MyTasks></MyTasks>
         </div>
     );
 };

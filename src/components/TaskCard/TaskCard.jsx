@@ -1,12 +1,15 @@
 import axios from "axios";
-import { useState } from "react";
+import {useContext, useState } from "react";
 import { FaCheck, FaEdit, FaTrash } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const TaskCard = ({ task, refetchMyTasks }) => {
+// import useTheme from "../../hooks/useTheme";
+
+const TaskCard = ({ task,i, refetchMyTasks }) => {
     const location = useLocation()
     const navigate = useNavigate()
+
   const {
     _id,
     title,
@@ -96,8 +99,10 @@ const TaskCard = ({ task, refetchMyTasks }) => {
       }
     });
   };
+  // console.log(theme);
   return (
-    <div className="card rounded-none w-4/5 md:w-full  bg-gray-200">
+    <div className={`card rounded-none w-4/5 md:w-full shadow-xl  border border-neutral-600`}>
+      {/* ${theme === 'dark'?'bg-gray-800 text-white':'bg-gray-100' */}
       <div className="card-body">
         <h2 className="card-title">{title}</h2>
         <p>{description}</p>
@@ -126,6 +131,9 @@ const TaskCard = ({ task, refetchMyTasks }) => {
               <FaCheck></FaCheck>
             </button>
           </div>
+        </div>
+        <div className="absolute -top-4 -left-4 flex gap-4">
+          <button className="btn bg-sky-500 btn-circle  ">{i+1}</button>
         </div>
       </div>
     </div>

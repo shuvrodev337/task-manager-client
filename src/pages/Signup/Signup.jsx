@@ -47,7 +47,6 @@ const Signup = () => {
             email: user.email,
           };
           axios.post("http://localhost:3000/users", savedUser).then((res) => {
-            console.log(res.data);
             if (res.data.insertedId) {
               reset();
               Swal.fire({
