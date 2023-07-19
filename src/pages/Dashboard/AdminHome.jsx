@@ -1,9 +1,10 @@
 import React from 'react';
+import SectionTitle from '../../components/SectionTitle/SectionTitle';
 
 const AdminHome = () => {
     return (
         <div>
-            Admin home
+                <SectionTitle sectionHeading={'Admin Home'}></SectionTitle>
         </div>
     );
 };

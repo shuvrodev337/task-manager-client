@@ -14,7 +14,7 @@ const Dashboard = () => {
   return (
     <>
     <Helmet>
-        <title>Samurai Camp | Dashboard</title>
+        <title>Task Manager | Dashboard</title>
       </Helmet>
 
     <div className="drawer lg:drawer-open">

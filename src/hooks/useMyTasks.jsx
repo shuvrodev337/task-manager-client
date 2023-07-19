@@ -2,9 +2,10 @@ import { AuthContext } from '../Providers/AuthProvider';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { useContext } from 'react';
+import useAxiosSecure from './useAxiosSecure';
 
 const useMyTasks = () => {
-
+const [axiosSecure] = useAxiosSecure()
     const {user, loading} = useContext(AuthContext)
 
 
@@ -12,10 +13,12 @@ const useMyTasks = () => {
     queryKey: ["myTasks"],
     enabled :!loading && !!user?.email,
     queryFn: async () => {
-      const res = await axios.get(`http://localhost:3000/tasks?email=${user?.email}`);
+      const res = await axiosSecure.get(`/user/tasks?email=${user?.email}`);
+      // console.log(user?.email);
       return res.data;
     },
   });
+  console.log(myTasks);
     return [myTasks, myTasksLoading, refetchMyTasks]
 };
 
