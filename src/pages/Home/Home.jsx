@@ -8,7 +8,7 @@ const Home = () => {
     return (
         <div>
             <Helmet>
-        <title>TODO | Home</title>
+        <title>Task Manager | Home</title>
       </Helmet>
             <MyTasks></MyTasks>
         </div>

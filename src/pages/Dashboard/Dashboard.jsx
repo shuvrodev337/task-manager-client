@@ -50,7 +50,7 @@ const Dashboard = () => {
           </li> */}
           <li>
             
-            <NavLink  to={"/dashboard/manage-tasks"}>
+            <NavLink  to={"/dashboard"}>
             <FaTools></FaTools>
               Manage Tasks</NavLink>
           </li>

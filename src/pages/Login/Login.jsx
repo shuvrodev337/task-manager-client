@@ -5,6 +5,8 @@ import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../../Providers/AuthProvider";
 import SocialLogins from "../../components/SocialLogins/SocialLogins";
+import Swal from "sweetalert2";
+import SectionTitle from "../../components/SectionTitle/SectionTitle";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -14,6 +16,16 @@ const location = useLocation()
   const navigate = useNavigate()
   const { register, handleSubmit, formState: { errors } } = useForm();
   const from = location.state?.from?.pathname || "/";
+  // console.log(from);
+  // if (from === '/create-task') {
+  //   Swal.fire({
+  //     position: "center",
+  //     icon: "warning",
+  //     title: "You have to log in first",
+  //     showConfirmButton: false,
+  //     timer: 2000,
+  //   });
+  // }
  const { user,
     loading,
     createUser, 
@@ -44,8 +56,9 @@ signIn(user.email, user.password)
     return (
     <>
     <Helmet>
-        <title>TODO | Login</title>
+        <title>Task Manager | Login</title>
       </Helmet>
+      <SectionTitle sectionHeading={'Log In Here!'}></SectionTitle>
       <div className="md:w-1/2 mx-auto">
       <div className="hero-content flex-col gap-10">
         

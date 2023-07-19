@@ -12,6 +12,7 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Helmet } from "react-helmet-async";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import SectionTitle from "../../components/SectionTitle/SectionTitle";
 const CreateTask = () => {
     const {user} = useContext(AuthContext)
   const [errorMsg, setErrorMsg] = useState("");
@@ -57,10 +58,13 @@ const [axiosSecure] = useAxiosSecure()
   };
 
   return (
-    <div className="md:w-1/2 mx-auto">
+    <>
+    
       <Helmet>
-        <title>TODO | Create Task</title>
+        <title>Task Manager | Create Task</title>
       </Helmet>
+      <SectionTitle sectionHeading={'Create A Task'}></SectionTitle>
+    <div className="md:w-1/2 mx-auto">
       <div className="hero-content flex-col gap-10">
         <div className="card  w-full  shadow-2xl bg-base-100 ">
           <form onSubmit={handleSubmit(onSubmit)} className="card-body">
@@ -155,6 +159,8 @@ const [axiosSecure] = useAxiosSecure()
         </div>
       </div>
     </div>
+
+    </>
   );
 };
 

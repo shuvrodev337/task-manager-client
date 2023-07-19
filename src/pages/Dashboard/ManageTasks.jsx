@@ -62,6 +62,7 @@ const deleteTask = (id)=>{
             .then((res) => {
               if (res.data.deletedCount > 0) {
                 
+                refetchAllTasks()
   
                 Swal.fire({
                   position: "top-end",
@@ -71,7 +72,6 @@ const deleteTask = (id)=>{
                   timer: 1500,
                 });
                 
-                refetchAllTasks()
               }
             });
         }

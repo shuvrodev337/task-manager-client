@@ -4,6 +4,7 @@ import useTheme from "../../hooks/useTheme";
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import useAdmin from "../../hooks/useAdmin";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
   const { user,
@@ -17,7 +18,15 @@ const [isAdmin, isAdminLoading] = useAdmin()
 
   const handleLogOut = () => {
     logOut()
-      .then(() => {})
+      .then(() => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Log Out Successful!",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      })
       .catch((error) => {
         // console.log(error.message);
       });

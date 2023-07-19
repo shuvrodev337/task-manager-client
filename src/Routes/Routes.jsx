@@ -14,6 +14,7 @@ import Dashboard from "../pages/Dashboard/Dashboard";
 // import ManageUsers from "../pages/Dashboard/ManageUsers";
 import ManageTasks from "../pages/Dashboard/ManageTasks";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import PrivateRoute from "./PrivateRoute";
 
   const router = createBrowserRouter([
     {
@@ -36,7 +37,7 @@ import ErrorPage from "../pages/ErrorPage/ErrorPage";
         },
         {
             path:'/create-task',
-            element:<CreateTask></CreateTask>
+            element:<PrivateRoute><CreateTask></CreateTask></PrivateRoute>
         },
         {
             path:'/my-tasks',
@@ -44,7 +45,7 @@ import ErrorPage from "../pages/ErrorPage/ErrorPage";
         },
         {
             path:'/edit-task',
-            element:<EditTask></EditTask>
+            element:<PrivateRoute><EditTask></EditTask></PrivateRoute>
         },
         
       ]

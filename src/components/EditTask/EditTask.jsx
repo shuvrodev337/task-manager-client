@@ -9,6 +9,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import SectionTitle from "../SectionTitle/SectionTitle";
 
 const EditTask = () => {
 const [axiosSecure]= useAxiosSecure()
@@ -70,11 +71,12 @@ updatedTask.assignedUserEmail = assignedUserEmail
         }
       });
 }
-
-  return <div className="md:w-1/2 mx-auto">
+return <>
     <Helmet>
-        <title>TODO | Edit Task</title>
+        <title>Task Manager | Edit Task</title>
       </Helmet>
+<SectionTitle sectionHeading={'Edit Task'}></SectionTitle>
+  <div className="md:w-1/2 mx-auto">
       <div className="hero-content flex-col gap-10">
         <div className="card  w-full  shadow-2xl bg-base-100 ">
           <form onSubmit={handleSubmit(onSubmit)} className="card-body">
@@ -141,7 +143,8 @@ updatedTask.assignedUserEmail = assignedUserEmail
           </form>
         </div>
       </div>
-    </div>;
+    </div>
+    </>;
 };
 
 export default EditTask;
