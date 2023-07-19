@@ -5,7 +5,7 @@ import { AuthContext } from '../Providers/AuthProvider';
 // import useAuth from './useAuth';
 
 const axiosSecure = axios.create({
-  baseURL: 'http://localhost:3000', 
+  baseURL: 'https://task-manager-server-phi-murex.vercel.app', 
 });
 
 const useAxiosSecure = () => {

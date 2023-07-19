@@ -37,20 +37,20 @@ const Dashboard = () => {
          
 
           { (user && isAdmin ) &&  <>
-          <li>
-            <NavLink to={"/dashboard/admin-home"}>
+          {/* <li>
+            <NavLink  to={"/dashboard"}>
               <FaUserShield></FaUserShield>
               Admin Home</NavLink>
-          </li>
-          <li>
+          </li> */}
+          {/* <li>
             
             <NavLink to={"/dashboard/manage-users"}>
             <FaUser></FaUser>
               Manage Users</NavLink>
-          </li>
+          </li> */}
           <li>
             
-            <NavLink to={"/dashboard/manage-tasks"}>
+            <NavLink  to={"/dashboard/manage-tasks"}>
             <FaTools></FaTools>
               Manage Tasks</NavLink>
           </li>

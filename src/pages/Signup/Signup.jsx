@@ -46,7 +46,7 @@ const Signup = () => {
             name: user.name,
             email: user.email,
           };
-          axios.post("http://localhost:3000/users", savedUser).then((res) => {
+          axios.post("https://task-manager-server-phi-murex.vercel.app/users", savedUser).then((res) => {
             if (res.data.insertedId) {
               reset();
               Swal.fire({

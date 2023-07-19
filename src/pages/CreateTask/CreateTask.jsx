@@ -11,10 +11,11 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 const CreateTask = () => {
     const {user} = useContext(AuthContext)
   const [errorMsg, setErrorMsg] = useState("");
-
+const [axiosSecure] = useAxiosSecure()
   const navigate = useNavigate();
 
   // hook form
@@ -25,48 +26,17 @@ const CreateTask = () => {
     formState: { errors },
   } = useForm();
 
-  // day picker
 
-//   const [selected, setSelected] = useState();
-
-//   let footer = <p>Please pick a day.</p>;
-//   if (selected) {
-//     footer = <p>You picked {format(selected, "PP")}.</p>;
-//   }
-  // console.log(selected);
-
-  //Modal
-//   const [isOpen, setIsOpen] = useState(false);
-//   const openModal = () => {
-//     setIsOpen(true);
-//   };
-
-//   const closeModal = () => {
-//     setIsOpen(false);
-//   };
-
-  // Get all Users
-
-//   const { data: users = [], refetch } = useQuery({
-//     queryKey: ["users"],
-
-//     queryFn: async () => {
-//       const res = await axios.get(`http://localhost:3000/users`);
-//       return res.data;
-//     },
-//   });
-  // console.log(users);
-//   const [selectedUser, setSelectedUser] = useState(null);
 
   const onSubmit = (newtask) => {
     newtask.assignedUser = user?.displayName 
       newtask.assignedUserEmail = user?.email 
       newtask.status = 'pending'
-      console.log(newtask);
+      // console.log(newtask);
 
-    axios.post("http://localhost:3000/tasks",newtask)
+      axiosSecure.post("/tasks",newtask)
           .then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             if (res.data.insertedId) {
               reset();
               navigate('/my-tasks')
@@ -81,7 +51,7 @@ const CreateTask = () => {
             }
           })
           .catch((error) => {
-            console.log(error.message);
+            // console.log(error.message);
             
           });
   };

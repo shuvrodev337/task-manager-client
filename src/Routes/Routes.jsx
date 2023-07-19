@@ -10,14 +10,17 @@ import MyTasks from "../pages/MyTasks/MyTasks";
 import EditTask from "../components/EditTask/EditTask";
 import AdminRoute from "./AdminRoute";
 import Dashboard from "../pages/Dashboard/Dashboard";
-import AdminHome from "../pages/Dashboard/AdminHome";
-import ManageUsers from "../pages/Dashboard/ManageUsers";
+// import AdminHome from "../pages/Dashboard/AdminHome";
+// import ManageUsers from "../pages/Dashboard/ManageUsers";
 import ManageTasks from "../pages/Dashboard/ManageTasks";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
   const router = createBrowserRouter([
     {
       path: "/",
       element: <MainLayout></MainLayout>,
+    errorElement:<ErrorPage></ErrorPage>,
+
       children:[
         {
             path:'/',
@@ -53,16 +56,16 @@ import ManageTasks from "../pages/Dashboard/ManageTasks";
         children:[
           {
             path:"/dashboard",
-        element:<AdminRoute><AdminHome></AdminHome></AdminRoute>,
-          },
-          {
-            path:"/dashboard/manage-users",
-        element:<AdminRoute><ManageUsers></ManageUsers></AdminRoute>,
-          },
-          {
-            path:"/dashboard/manage-tasks",
         element:<AdminRoute><ManageTasks></ManageTasks></AdminRoute>,
           },
+        //   {
+        //     path:"/dashboard/manage-users",
+        // element:<AdminRoute><ManageUsers></ManageUsers></AdminRoute>,
+        //   },
+        //   {
+        //     path:"/dashboard/manage-tasks",
+        // element:<AdminRoute><ManageTasks></ManageTasks></AdminRoute>,
+        //   },
         ]
     
     }

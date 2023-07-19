@@ -21,7 +21,7 @@ const SocialLogins = () => {
                 const loggedInUser = result.user;
                 // console.log(loggedInUser);
                 const savedUser = { name: loggedInUser.displayName, email: loggedInUser.email}
-                axios.post('http://localhost:3000/users',savedUser)
+                axios.post('https://task-manager-server-phi-murex.vercel.app/users',savedUser)
                 .then(res=>{
                     // console.log(res.data);
                     Swal.fire({

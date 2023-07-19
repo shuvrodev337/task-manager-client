@@ -18,7 +18,6 @@ const [axiosSecure] = useAxiosSecure()
       return res.data;
     },
   });
-  console.log(myTasks);
     return [myTasks, myTasksLoading, refetchMyTasks]
 };
 

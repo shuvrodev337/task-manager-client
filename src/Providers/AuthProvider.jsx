@@ -49,7 +49,7 @@ const AuthProvider = ({ children }) => {
             setUser(currentUser);
             // Get and Set Token
             if (currentUser) {
-                axios.post('http://localhost:3000/jwt',{email:currentUser?.email})
+                axios.post('https://task-manager-server-phi-murex.vercel.app/jwt',{email:currentUser?.email})
                 .then(data=>{
                     // console.log(data.data.token);
                     localStorage.setItem('access-token', data.data.token)

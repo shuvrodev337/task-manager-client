@@ -18,7 +18,7 @@ const ManageTasks = () => {
 const handleSearch=()=>{
     // event.preventDefault()
     const searchText = searchRef.current.value
-    console.log(searchText);
+    // console.log(searchText);
     // setSearchState(searchText)
     axiosSecure.get(`/all-tasks/search?search=${searchText}`)
     .then(res=>{
@@ -46,6 +46,37 @@ const handleSearch=()=>{
     })
 }
 
+const deleteTask = (id)=>{
+    Swal.fire({
+        title: "Are you sure?",
+        text: `You want to delete the task?`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, Delete!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axiosSecure
+            .delete(`/tasks/delete/${id}`)
+            .then((res) => {
+              if (res.data.deletedCount > 0) {
+                
+  
+                Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: "Task Deleted!",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+                
+                refetchAllTasks()
+              }
+            });
+        }
+      });
+}
     return (
         <div className="w-full">
         <Helmet>
@@ -101,8 +132,8 @@ const handleSearch=()=>{
         //   allFeedbacks.map((feedback,index)=> <FeedbackRow key={feedback._id} feedback={feedback} index={index} refetch={refetch}></FeedbackRow>)
         }
         {
-         searchedData ? searchedData.map((task,index)=><TaskRow key={task._id} task={task} index={index}></TaskRow>)   :
-         allTasks.map((task,index)=><TaskRow key={task._id} task={task} index={index}></TaskRow>) 
+         searchedData ? searchedData.map((task,index)=><TaskRow key={task._id} task={task} index={index} deleteTask={deleteTask}></TaskRow>)   :
+         allTasks.map((task,index)=><TaskRow key={task._id} task={task} index={index} deleteTask={deleteTask}></TaskRow>) 
 
         }
         

@@ -11,7 +11,7 @@ const Navbar = () => {
     logOut } = useContext(AuthContext)
 
 const [isAdmin, isAdminLoading] = useAdmin()
-console.log(isAdmin);
+// console.log(isAdmin);
 
 
 
@@ -19,7 +19,7 @@ console.log(isAdmin);
     logOut()
       .then(() => {})
       .catch((error) => {
-        console.log(error.message);
+        // console.log(error.message);
       });
   };
 
@@ -36,9 +36,9 @@ const [theme,setTheme] = useTheme()
   // Central Nav Buttons
   const centerNavItems = (
     <>
-      <NavLink to={'/my-tasks'}>My Tasks</NavLink>
+      <NavLink className={({ isActive }) => (isActive ? "text-red-500" : "")} to={'/my-tasks'}>My Tasks</NavLink>
 
-      <NavLink to={'/create-task'}>Create A Task</NavLink>
+      <NavLink className={({ isActive }) => (isActive ? "text-red-500" : "")} to={'/create-task'}>Create A Task</NavLink>
       {(isAdmin &&  user) && <NavLink to={'/dashboard'} >Dashboard</NavLink>}
 
       
@@ -71,8 +71,8 @@ const [theme,setTheme] = useTheme()
         </>
       ):(
         <>
-        <NavLink to={'/sign-up'}>Sign Up</NavLink>
-        <NavLink to={'/log-in'}>Log In</NavLink>
+        <NavLink className={({ isActive }) => (isActive ? "text-red-500" : "")} to={'/sign-up'}>Sign Up</NavLink>
+        <NavLink className={({ isActive }) => (isActive ? "text-red-500" : "")} to={'/log-in'}>Log In</NavLink>
         </>
       )
     }
@@ -80,7 +80,7 @@ const [theme,setTheme] = useTheme()
   );
 
   return (
-    <div className="navbar px-6 h-20 rounded-lg mt-4 bg-transparent shadow-lg">
+    <div className="navbar px-6 h-20 rounded-lg mt-4 bg-transparent shadow-lg max-w-screen-xl mx-auto">
       <div className="navbar-start space-x-2">
         {/* <NavLink to={"/"}>
           <img src={logo1} alt="" className="h-20" />

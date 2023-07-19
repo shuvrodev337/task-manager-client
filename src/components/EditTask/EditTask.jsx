@@ -8,8 +8,11 @@ import { useContext, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const EditTask = () => {
+const [axiosSecure]= useAxiosSecure()
+
   const location = useLocation();
   const navigate = useNavigate()
 
@@ -47,8 +50,8 @@ updatedTask.assignedUserEmail = assignedUserEmail
         confirmButtonText: "Yes, Do It!",
       }).then((result) => {
         if (result.isConfirmed) {
-          axios
-            .put(`http://localhost:3000/tasks/update/${_id}`, updatedTask)
+          axiosSecure
+            .put(`/tasks/update/${_id}`, updatedTask)
             .then((res) => {
               if (res.data.modifiedCount > 0) {
                 

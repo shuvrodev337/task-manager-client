@@ -1,5 +1,5 @@
 
-const TaskRow = ({task,index}) => {
+const TaskRow = ({task,index, deleteTask}) => {
 
     return (
         <tr >
@@ -9,9 +9,9 @@ const TaskRow = ({task,index}) => {
                   <td>{task.status}</td>
               <td className="text-right">
                <button
-            //    onClick={()=>approveFeedback(feedback)}
+               onClick={()=>deleteTask(task._id)}
             //    disabled={disable || feedback.status === 'approved'} 
-               className="btn btn-xs btn-info rounded-full">Approve</button>
+               className="btn btn-xs btn-warning rounded-full">Delete</button>
               </td>
                 </tr>
     );
