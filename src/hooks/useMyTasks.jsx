@@ -1,6 +1,5 @@
 import { AuthContext } from '../Providers/AuthProvider';
 import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
 import { useContext } from 'react';
 import useAxiosSecure from './useAxiosSecure';
 
@@ -14,7 +13,6 @@ const [axiosSecure] = useAxiosSecure()
     enabled :!loading && !!user?.email,
     queryFn: async () => {
       const res = await axiosSecure.get(`/user/tasks?email=${user?.email}`);
-      // console.log(user?.email);
       return res.data;
     },
   });
