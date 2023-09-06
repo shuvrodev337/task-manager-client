@@ -49,6 +49,7 @@ const MyTasks = () => {
               key={index}
               status={status}
              myTasks={myTasks}
+             refetchMyTasks={refetchMyTasks}
             ></Section>
           ))}
         </div>
@@ -60,12 +61,29 @@ const MyTasks = () => {
 
 export default MyTasks;
 
-const Section = ({ status, myTasks}) => {
-  const text = "TODO";
-  const bg = "bg-slate-500";
+const Section = ({ status, myTasks,refetchMyTasks}) => {
+  let text = "TO DO";
+  let bg = "bg-slate-500";
+  let tasksToMap = myTasks.filter(task => task.status === 'todo')
+
+  if (status === 'doing') {
+    text = 'DOING'
+    bg = "bg-cyan-500"
+    tasksToMap = myTasks.filter(task => task.status === 'doing')
+  }
+  if (status === 'done') {
+    text = 'DONE'
+    bg = "bg-green-500"
+    tasksToMap = myTasks.filter(task => task.status === 'done')
+  }
   return (
     <div className={`w-64`}>
-      <Header text={text} bg={bg} count={myTasks.length}></Header> List
+      <Header text={text} bg={bg} count={tasksToMap.length}></Header> 
+     <div className="flex flex-col gap-4 my-5">
+     {
+        tasksToMap.map((task,i)=><TaskCard task={task} key={task._id} refetchMyTasks={refetchMyTasks} i={i}></TaskCard>)
+      }
+     </div>
     </div>
   );
 };

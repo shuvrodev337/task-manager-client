@@ -90,12 +90,12 @@ const TaskCard = ({ task, i, refetchMyTasks }) => {
   // console.log(theme);
   return (
     <div
-      className={`card rounded-none w-96 shadow-xl  border border-neutral-600`}
+      className={`card rounded-md w-64 h-64  shadow-2xl p-4 mt-8  cursor-grab `}
     >
       <div className="card-body">
         <h2 className="card-title">{title}</h2>
         <p>{description}</p>
-        <p>Status: {status}</p>
+        {/* <p>Status: {status}</p> */}
         
         <div className="absolute top-2 right-4 flex gap-4">
           <div className="tooltip  tooltip-bottom  " data-tip="Edit Task">
@@ -125,7 +125,7 @@ const TaskCard = ({ task, i, refetchMyTasks }) => {
           </div> */}
         </div>
         <div className="absolute -top-4 -left-4 flex gap-4">
-          <button className="btn bg-info btn-circle text-white ">
+          <button className="btn btn-sm bg-info btn-circle text-white ">
             {i + 1}
           </button>
         </div>
