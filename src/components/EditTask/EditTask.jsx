@@ -113,26 +113,6 @@ return <>
               )}
             </div>
 
-            
-
-<div className="form-control">
-              <label className="label">
-                <span className="label-text">Due Date</span>
-              </label>
-              <input
-                type="date"
-                // placeholder="Task Title"
-                // className="input input-bordered"
-                // defaultValue={dueDate}
-                {...register("dueDate", { required: true,valueAsDate:true })}
-              />
-              {errors.dueDate?.type === "required" && (
-                <p className="text-red-800 text-sm my-2">
-                  Due date of task is required
-                </p>
-              )}
-            </div>
-
             <div className="form-control mt-6">
               <input
                 type="submit"
@@ -148,3 +128,21 @@ return <>
 };
 
 export default EditTask;
+
+{/* <div className="form-control">
+              <label className="label">
+                <span className="label-text">Due Date</span>
+              </label>
+              <input
+                type="date"
+                // placeholder="Task Title"
+                // className="input input-bordered"
+                // defaultValue={dueDate}
+                {...register("dueDate", { required: true,valueAsDate:true })}
+              />
+              {errors.dueDate?.type === "required" && (
+                <p className="text-red-800 text-sm my-2">
+                  Due date of task is required
+                </p>
+              )}
+            </div> */}

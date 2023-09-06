@@ -101,25 +101,10 @@ const TaskCard = ({ task, i, refetchMyTasks }) => {
       <div className="card-body">
         <h2 className="card-title">{title}</h2>
         <p>{description}</p>
-        <p>Due Date : {formattedDate}</p>
-        <p>Status: {status}</p>
+        {/* <p>Status: {status}</p> */}
         {/* <div className="flex gap-4"> */}
-        <p>Assigned to: {assignedUser}</p>
-        <details className="dropdown ">
-          <summary className="m-1 btn btn-sm">All Users</summary>
-          <ul className="p-2 shadow menu dropdown-content  z-[1] bg-base-100 rounded-box w-52">
-            {
-              allUsers.map(user=><li key={user._id} >{user.name}</li>)
-            }
-            {/* <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <a>Item 2</a>
-            </li> */}
-          </ul>
-        </details> 
-        {/* </div> */}
+        {/* <p>Assigned to: {assignedUser}</p> */}
+        
         <div className="absolute top-2 right-4 flex gap-4">
           <div className="tooltip  tooltip-bottom  " data-tip="Edit Task">
             <button

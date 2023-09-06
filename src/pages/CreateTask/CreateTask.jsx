@@ -32,7 +32,7 @@ const [axiosSecure] = useAxiosSecure()
   const onSubmit = (newtask) => {
     newtask.assignedUser = user?.displayName 
       newtask.assignedUserEmail = user?.email 
-      newtask.status = 'pending'
+      newtask.status = 'todo'
       // console.log(newtask);
 
       axiosSecure.post("/tasks",newtask)
@@ -101,53 +101,6 @@ const [axiosSecure] = useAxiosSecure()
               )}
             </div>
 
-            {/* select user */}
-            {/* <div className="form-control">
-              <label className="label">
-                <span className="label-text">Assign User</span>
-              </label>
-              <select
-                // defaultValue={selectedUser}
-                // onChange={(e) => setSelectedUser(e.target.value)}
-                className="drop-down dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
-                {...register("assignedUser", { required: true })}
-              >
-                <option value="Select" disabled>
-                  Users
-                </option>
-
-                {users.map((user) => (
-                  <option key={user._id} value={user?.name}>
-                    {user?.name}
-                  </option>
-                ))}
-              </select>
-
-              {errors.name?.type === "required" && (
-                <p className="text-red-800 text-sm">
-                  Description of task is required
-                </p>
-              )}
-            </div> */}
-            {/* Select due date  */}
-
-<div className="form-control">
-              <label className="label">
-                <span className="label-text">Due Date</span>
-              </label>
-              <input
-                type="date"
-                // placeholder="Task Title"
-                // className="input input-bordered"
-                {...register("dueDate", { required: true,valueAsDate:true })}
-              />
-              {errors.dueDate?.type === "required" && (
-                <p className="text-red-800 text-sm">
-                  Due date of task is required
-                </p>
-              )}
-            </div>
-
             <div className="form-control mt-6">
               <input
                 type="submit"
@@ -166,4 +119,21 @@ const [axiosSecure] = useAxiosSecure()
 
 export default CreateTask;
 
-// Tasks should have a title, description, due date, status, and assigned user (automatically showcase all users in this dropdown field)
+{/* If due date functionality is required  */}
+{/* <div className="form-control">
+              <label className="label">
+                <span className="label-text">Due Date</span>
+              </label>
+              <input
+                type="date"
+                // placeholder="Task Title"
+                // className="input input-bordered"
+                {...register("dueDate", { required: true,valueAsDate:true })}
+              />
+              {errors.dueDate?.type === "required" && (
+                <p className="text-red-800 text-sm">
+                  Due date of task is required
+                </p>
+              )}
+            </div> */}
+{/* Due date functionality ends  */}

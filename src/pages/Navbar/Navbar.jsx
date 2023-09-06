@@ -3,7 +3,6 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import useTheme from "../../hooks/useTheme";
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
-import useAdmin from "../../hooks/useAdmin";
 import Swal from "sweetalert2";
 
 const Navbar = () => {
@@ -11,7 +10,7 @@ const Navbar = () => {
     loading,
     logOut } = useContext(AuthContext)
 
-const [isAdmin, isAdminLoading] = useAdmin()
+// const [isAdmin, isAdminLoading] = useAdmin()
 // console.log(isAdmin);
 
 
@@ -48,7 +47,7 @@ const [theme,setTheme] = useTheme()
       <NavLink className={({ isActive }) => (isActive ? "text-red-500" : "")} to={'/my-tasks'}>My Tasks</NavLink>
 
       <NavLink className={({ isActive }) => (isActive ? "text-red-500" : "")} to={'/create-task'}>Create A Task</NavLink>
-      {(isAdmin &&  user) && <NavLink to={'/dashboard'} >Dashboard</NavLink>}
+      {/* {(isAdmin &&  user) && <NavLink to={'/dashboard'} >Dashboard</NavLink>} */}
 
       
         <label className="swap swap-rotate">
@@ -91,10 +90,7 @@ const [theme,setTheme] = useTheme()
   return (
     <div className="navbar px-6 h-20 rounded-lg mt-4 bg-transparent shadow-lg max-w-screen-xl mx-auto">
       <div className="navbar-start space-x-2">
-        {/* <NavLink to={"/"}>
-          <img src={logo1} alt="" className="h-20" />
-          
-        </NavLink> */}
+        
         <NavLink to={"/"}>
           <h2 className="text-3xl ">Task Manager</h2>
         </NavLink>

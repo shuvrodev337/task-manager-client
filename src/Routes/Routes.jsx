@@ -8,11 +8,6 @@ import Login from "../pages/Login/Login";
 import CreateTask from "../pages/CreateTask/CreateTask";
 import MyTasks from "../pages/MyTasks/MyTasks";
 import EditTask from "../components/EditTask/EditTask";
-import AdminRoute from "./AdminRoute";
-import Dashboard from "../pages/Dashboard/Dashboard";
-// import AdminHome from "../pages/Dashboard/AdminHome";
-// import ManageUsers from "../pages/Dashboard/ManageUsers";
-import ManageTasks from "../pages/Dashboard/ManageTasks";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import PrivateRoute from "./PrivateRoute";
 
@@ -50,26 +45,7 @@ import PrivateRoute from "./PrivateRoute";
         
       ]
     },
-    {
-      
-        path:'/dashboard',
-        element:<AdminRoute><Dashboard></Dashboard></AdminRoute>,
-        children:[
-          {
-            path:"/dashboard",
-        element:<AdminRoute><ManageTasks></ManageTasks></AdminRoute>,
-          },
-        //   {
-        //     path:"/dashboard/manage-users",
-        // element:<AdminRoute><ManageUsers></ManageUsers></AdminRoute>,
-        //   },
-        //   {
-        //     path:"/dashboard/manage-tasks",
-        // element:<AdminRoute><ManageTasks></ManageTasks></AdminRoute>,
-        //   },
-        ]
-    
-    }
+  
   ]);
 
   export default router
