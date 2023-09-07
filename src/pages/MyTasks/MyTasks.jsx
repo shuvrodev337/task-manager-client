@@ -43,7 +43,7 @@ const MyTasks = () => {
           </Link>
         </>
       ) : (
-        <div className="flex gap-16">
+        <div className="flex flex-col md:flex-row gap-16 items-center md:items-baseline justify-center">
           {statuses.map((status, index) => (
             <Section
               key={index}
