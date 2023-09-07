@@ -60,34 +60,34 @@ const TaskCard = ({ task, i, refetchMyTasks }) => {
     });
   };
 
-  const completeTask = (task) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: `You want to mark this task as 'completed'?`,
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, Do It!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        axiosSecure.patch(`/tasks/completed/${task._id}`).then((res) => {
-          if (res.data.modifiedCount > 0) {
-            setDisable(true);
-            refetchMyTasks();
+  // const completeTask = (task) => {
+  //   Swal.fire({
+  //     title: "Are you sure?",
+  //     text: `You want to mark this task as 'completed'?`,
+  //     icon: "warning",
+  //     showCancelButton: true,
+  //     confirmButtonColor: "#3085d6",
+  //     cancelButtonColor: "#d33",
+  //     confirmButtonText: "Yes, Do It!",
+  //   }).then((result) => {
+  //     if (result.isConfirmed) {
+  //       axiosSecure.patch(`/tasks/completed/${task._id}`).then((res) => {
+  //         if (res.data.modifiedCount > 0) {
+  //           setDisable(true);
+  //           refetchMyTasks();
 
-            Swal.fire({
-              position: "top-end",
-              icon: "success",
-              title: "Task marked as completed!",
-              showConfirmButton: false,
-              timer: 1500,
-            });
-          }
-        });
-      }
-    });
-  };
+  //           Swal.fire({
+  //             position: "top-end",
+  //             icon: "success",
+  //             title: "Task marked as completed!",
+  //             showConfirmButton: false,
+  //             timer: 1500,
+  //           });
+  //         }
+  //       });
+  //     }
+  //   });
+  // };
  
 
   const [{ isDragging }, drag] = useDrag(() => ({
