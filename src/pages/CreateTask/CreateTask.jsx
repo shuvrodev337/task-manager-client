@@ -33,11 +33,9 @@ const [axiosSecure] = useAxiosSecure()
     newtask.assignedUser = user?.displayName 
       newtask.assignedUserEmail = user?.email 
       newtask.status = 'todo'
-      // console.log(newtask);
 
       axiosSecure.post("/tasks",newtask)
           .then((res) => {
-            // console.log(res.data);
             if (res.data.insertedId) {
               reset();
               navigate('/my-tasks')

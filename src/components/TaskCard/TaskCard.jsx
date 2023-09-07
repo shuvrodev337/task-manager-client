@@ -60,34 +60,6 @@ const TaskCard = ({ task, i, refetchMyTasks }) => {
     });
   };
 
-  // const completeTask = (task) => {
-  //   Swal.fire({
-  //     title: "Are you sure?",
-  //     text: `You want to mark this task as 'completed'?`,
-  //     icon: "warning",
-  //     showCancelButton: true,
-  //     confirmButtonColor: "#3085d6",
-  //     cancelButtonColor: "#d33",
-  //     confirmButtonText: "Yes, Do It!",
-  //   }).then((result) => {
-  //     if (result.isConfirmed) {
-  //       axiosSecure.patch(`/tasks/completed/${task._id}`).then((res) => {
-  //         if (res.data.modifiedCount > 0) {
-  //           setDisable(true);
-  //           refetchMyTasks();
-
-  //           Swal.fire({
-  //             position: "top-end",
-  //             icon: "success",
-  //             title: "Task marked as completed!",
-  //             showConfirmButton: false,
-  //             timer: 1500,
-  //           });
-  //         }
-  //       });
-  //     }
-  //   });
-  // };
  
 
   const [{ isDragging }, drag] = useDrag(() => ({
@@ -97,16 +69,14 @@ const TaskCard = ({ task, i, refetchMyTasks }) => {
       isDragging: !!monitor.isDragging()
     })
   }))
-  // console.log(isDragging);
   return (
     <div
     ref={drag}
-      className={`card rounded-md w-64 h-64  shadow-2xl p-4 mt-8  cursor-grab ${isDragging?'opacity-25':'opacity-100'}`}
+      className={`card rounded-md w-64 h-64  shadow-2xl p-4 mt-8  cursor-grab ${isDragging?'opacity-25':'opacity-100'} tooltip text-left`} data-tip="Drag Task To Update Status"
     >
       <div className="card-body">
         <h2 className="card-title">{title}</h2>
         <p>{description}</p>
-        {/* <p>Status: {status}</p> */}
         
         <div className="absolute top-2 right-4 flex gap-4">
           <div className="tooltip  tooltip-bottom  " data-tip="Edit Task">
@@ -124,16 +94,7 @@ const TaskCard = ({ task, i, refetchMyTasks }) => {
               <FaTrash></FaTrash>
             </button>
           </div>
-          {/* <div className="tooltip  tooltip-bottom" data-tip="Mark as complete">
-            <button
-              className={`text-xl ${
-                disable || (status === "completed" && "hidden")
-              }`}
-              onClick={() => completeTask(task)}
-            >
-              <FaCheck></FaCheck>
-            </button>
-          </div> */}
+
         </div>
         <div className="absolute -top-4 -left-4 flex gap-4">
           <button className="btn btn-sm bg-info btn-circle text-white ">

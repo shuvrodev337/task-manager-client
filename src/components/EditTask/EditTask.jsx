@@ -23,7 +23,6 @@ const [axiosSecure]= useAxiosSecure()
     _id,
     title,
     description,
-    dueDate,
     assignedUser,
     status,
     assignedUserEmail,
