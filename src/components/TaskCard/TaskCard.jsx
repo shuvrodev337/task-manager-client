@@ -4,6 +4,7 @@ import { FaCheck, FaEdit, FaTrash } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { useDrag } from "react-dnd";
 
 // import useTheme from "../../hooks/useTheme";
 
@@ -87,10 +88,20 @@ const TaskCard = ({ task, i, refetchMyTasks }) => {
       }
     });
   };
-  // console.log(theme);
+ 
+
+  const [{ isDragging }, drag] = useDrag(() => ({
+    type: "task",
+    item:{id: task._id},
+    collect: (monitor) => ({
+      isDragging: !!monitor.isDragging()
+    })
+  }))
+  // console.log(isDragging);
   return (
     <div
-      className={`card rounded-md w-64 h-64  shadow-2xl p-4 mt-8  cursor-grab `}
+    ref={drag}
+      className={`card rounded-md w-64 h-64  shadow-2xl p-4 mt-8  cursor-grab ${isDragging?'opacity-25':'opacity-100'}`}
     >
       <div className="card-body">
         <h2 className="card-title">{title}</h2>

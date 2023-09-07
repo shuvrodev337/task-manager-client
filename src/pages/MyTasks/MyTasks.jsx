@@ -5,25 +5,13 @@ import useMyTasks from "../../hooks/useMyTasks";
 import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
+import { useDrop } from "react-dnd";
 
 const MyTasks = () => {
+
   const { user } = useContext(AuthContext);
   const [myTasks, myTasksLoading, refetchMyTasks] = useMyTasks();
-  // const [todos, setTodos] = useState([]);
-  // const [inProgress, setInProgress] = useState([]);
-  // const [done, setDone] = useState([]);
-
-  // useEffect(() => {
-  //   const filteredTodos = myTasks.filter((task) => task.status === "todo");
-  //   const filteredInProgress = myTasks.filter(
-  //     (task) => task.status === "doing"
-  //   );
-  //   const filteredDone = myTasks.filter((task) => task.status === "done");
-  //   setTodos(filteredTodos);
-  //   setInProgress(filteredInProgress);
-  //   setDone(filteredDone);
-  // }, [myTasks]);
-
+console.log(theme);
 
   const statuses = ["todo", "doing", "done"];
   return (
@@ -76,8 +64,19 @@ const Section = ({ status, myTasks,refetchMyTasks}) => {
     bg = "bg-green-500"
     tasksToMap = myTasks.filter(task => task.status === 'done')
   }
+
+  const [{ isOver }, drop] = useDrop(() => ({
+    accept: "task",
+    drop:(item)=>addItemToSection(item.id),
+    collect: (monitor) => ({
+      isOver: !!monitor.isOver()
+    })
+  }))
+  const addItemToSection =(id)=>{
+console.log('dropped', id, status);
+  }
   return (
-    <div className={`w-64`}>
+    <div ref={drop} className={`w-64 ${isOver ?'bg-slate-100':''}`}>
       <Header text={text} bg={bg} count={tasksToMap.length}></Header> 
      <div className="flex flex-col gap-4 my-5">
      {
