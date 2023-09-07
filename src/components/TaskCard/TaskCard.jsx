@@ -6,7 +6,6 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useDrag } from "react-dnd";
 
-// import useTheme from "../../hooks/useTheme";
 
 const TaskCard = ({ task, i, refetchMyTasks }) => {
   const location = useLocation();

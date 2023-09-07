@@ -63,7 +63,7 @@ const Section = ({ status, myTasks,refetchMyTasks}) => {
     }
     //-------------------------------------------------------------------
     return (
-      <div ref={drop} className={`w-64 ${isOver ?'bg-slate-100':''}`}>
+      <div ref={drop} className={`h-screen w-64 ${isOver ?'bg-slate-100':''}`}>
         <Header text={text} bg={bg} count={tasksToMap.length}></Header> 
         <div className="divider w-9/12 mx-auto"></div>
   
