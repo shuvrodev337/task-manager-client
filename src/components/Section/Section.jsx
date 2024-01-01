@@ -31,7 +31,7 @@ const Section = ({ status, myTasks,refetchMyTasks}) => {
   
   // ----------------------Updating Tasks --------------------------
     const addItemToSection =(id)=>{
-  console.log('dropped', id, status);
+  // console.log('dropped', id, status);
   
   const upDateTask = (id) => {
     Swal.fire({
