@@ -33,33 +33,46 @@ const Section = ({ status, myTasks,refetchMyTasks}) => {
     const addItemToSection =(id)=>{
   // console.log('dropped', id, status);
   
-  const upDateTask = (id) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: `Change the status of task as "${status}"?`,
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, Do It!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        axiosSecure.patch(`/tasks/${status}/${id}`).then((res) => {
-          if (res.data.modifiedCount > 0) {
-            refetchMyTasks();
-            Swal.fire({
-              position: "top-end",
-              icon: "success",
-              title: `Task status updated as "${status}"`,
-              showConfirmButton: false,
-              timer: 1500,
-            });
-          }
-        });
-      }
-    });
-  };
-  upDateTask(id)
+  // const upDateTask = (id) => {
+  //   Swal.fire({
+  //     title: "Are you sure?",
+  //     text: `Change the status of task as "${status}"?`,
+  //     icon: "warning",
+  //     showCancelButton: true,
+  //     confirmButtonColor: "#3085d6",
+  //     cancelButtonColor: "#d33",
+  //     confirmButtonText: "Yes, Do It!",
+  //   }).then((result) => {
+  //     if (result.isConfirmed) {
+  //       axiosSecure.patch(`/tasks/${status}/${id}`).then((res) => {
+  //         if (res.data.modifiedCount > 0) {
+  //           refetchMyTasks();
+  //           Swal.fire({
+  //             position: "top-end",
+  //             icon: "success",
+  //             title: `Task status updated as "${status}"`,
+  //             showConfirmButton: false,
+  //             timer: 1500,
+  //           });
+  //         }
+  //       });
+  //     }
+  //   });
+  // };
+  // upDateTask(id)
+
+  axiosSecure.patch(`/tasks/${status}/${id}`).then((res) => {
+    if (res.data.modifiedCount > 0) {
+      refetchMyTasks();
+      Swal.fire({
+        // position: "top-end",
+        icon: "success",
+        title: `Task status: ${status}`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+  });
     }
     //-------------------------------------------------------------------
     return (

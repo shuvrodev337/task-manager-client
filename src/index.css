@@ -27,8 +27,8 @@
   left: 0;
   width: 0;
   height: 2px;
-  background-color: #000; /* Set your underline color here */
-  transition: width 0.3s ease; /* Adjust the duration and easing function as needed */
+  background-color: #252323; /* underline color  */
+  transition: width 0.5s ease; /* duration and easing function as needed */
 }
 
 .NavLink.active::after {

@@ -23,26 +23,13 @@ const Navbar = () => {
         });
       })
       .catch((error) => {
-        // console.log(error.message);
+        console.log(error.message);
       });
   };
 
   // Central Nav Buttons
   const centerNavItems = (
     <>
-      {/* <NavLink
-        className={({ isActive }) => (isActive ? "text-red-500" : "")}
-        to={"/my-tasks"}
-      >
-        My Tasks
-      </NavLink>
-
-      <NavLink
-        className={({ isActive }) => (isActive ? "text-red-500" : "")}
-        to={"/create-task"}
-      >
-        Add Task
-      </NavLink> */}
       <MyNavLink to={"/my-tasks"}>My Tasks</MyNavLink>
       <MyNavLink to={"/create-task"}>Create Task</MyNavLink>
     </>
@@ -54,7 +41,7 @@ const Navbar = () => {
         <>
           {user?.displayName && (
             <div>
-              <p className="text-center"> Logged in as</p>
+              <p className="text-center">Hello!</p>
               <p> {user?.displayName}</p>
             </div>
           )}
@@ -64,15 +51,6 @@ const Navbar = () => {
         </>
       ) : (
         <>
-          {/* <NavLink
-            className={({ isActive }) =>
-              isActive ? "underline underline-offset-4" : ""
-            }
-            to={"/sign-up"}
-          >
-            Sign Up
-          </NavLink>
-          <NavLink className={({ isActive }) => (isActive ? "underline underline-offset-4" : "")} to={'/log-in'}>Log In</NavLink> */}
           <MyNavLink to={'/log-in'}>Log In</MyNavLink>
           <MyNavLink to={'/sign-up'}>Sign Up</MyNavLink>
 

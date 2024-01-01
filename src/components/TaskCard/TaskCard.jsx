@@ -45,7 +45,7 @@ const TaskCard = ({ task, i, refetchMyTasks }) => {
         axiosSecure.delete(`/tasks/delete/${task._id}`).then((res) => {
           if (res.data.deletedCount > 0) {
             Swal.fire({
-              position: "top-end",
+              // position: "top-end",
               icon: "success",
               title: "Task Deleted!",
               showConfirmButton: false,
