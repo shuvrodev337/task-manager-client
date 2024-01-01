@@ -34,10 +34,10 @@ import PrivateRoute from "./PrivateRoute";
             path:'/create-task',
             element:<PrivateRoute><CreateTask></CreateTask></PrivateRoute>
         },
-        {
-            path:'/my-tasks',
-            element:<MyTasks></MyTasks>
-        },
+        // {
+        //     path:'/my-tasks',
+        //     element:<MyTasks></MyTasks>
+        // },
         {
             path:'/edit-task',
             element:<PrivateRoute><EditTask></EditTask></PrivateRoute>

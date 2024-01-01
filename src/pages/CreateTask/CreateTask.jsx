@@ -38,7 +38,7 @@ const [axiosSecure] = useAxiosSecure()
           .then((res) => {
             if (res.data.insertedId) {
               reset();
-              navigate('/my-tasks')
+              navigate('/')
               Swal.fire({
                 position: "center",
                 icon: "success",

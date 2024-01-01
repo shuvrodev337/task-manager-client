@@ -30,7 +30,7 @@ const Navbar = () => {
   // Central Nav Buttons
   const centerNavItems = (
     <>
-      <MyNavLink to={"/my-tasks"}>My Tasks</MyNavLink>
+      <MyNavLink to={"/"}>Home</MyNavLink>
       <MyNavLink to={"/create-task"}>Create Task</MyNavLink>
     </>
   );

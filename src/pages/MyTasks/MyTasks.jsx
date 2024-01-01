@@ -5,7 +5,7 @@ import useMyTasks from "../../hooks/useMyTasks";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
-
+import { FaRegSadTear } from "react-icons/fa";
 import Section from "../../components/Section/Section";
 import MyNavLink from "../../components/MayNavLink/MyNavLink";
 
@@ -28,8 +28,8 @@ const MyTasks = () => {
 </div> */}
       {(!myTasksLoading && myTasks.length < 1) || !user ? (
         <div className="flex flex-col items-center md:items-center justify-center">
-          <p className="mb-2 font-medium text-xl">You have no Task</p>
-          <MyNavLink to={"/create-task"}>Create Task</MyNavLink>
+          <p className="mb-2 font-medium text-xl flex items-center gap-2">You have no Task <FaRegSadTear /></p>
+          <MyNavLink  to={"/create-task"}><span className="underline underline-offset-4 ">Create Task</span></MyNavLink>
 
         </div>
       ) : (

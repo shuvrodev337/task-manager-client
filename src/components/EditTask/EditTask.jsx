@@ -64,7 +64,7 @@ updatedTask.assignedUserEmail = assignedUserEmail
                   timer: 1500,
                 });
                 reset()
-                navigate('/my-tasks')
+                navigate('/')
               }
             });
         }
